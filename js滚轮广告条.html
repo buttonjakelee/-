@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+        .box {
+            width: 1226px;
+            height: 1100px;
+            margin: 0 auto;
+            background-color: #ff6700;
+        }
+        .other {
+            height: 300px;
+        }
+        .main {
+            height: 200px;
+            background-color: black;
+        }
+
+        .slide {
+            position: fixed;
+            bottom: 70px;
+            right: 0;
+            width: 85px;
+            height: 455px;
+        }
+        .slide div{
+            width: 85px;
+            height: 90px;
+            font-size: 14px;
+            text-align: center;
+            line-height: 90px;
+            color: #757575;
+            background-color: #ffffff;
+            border: #f5f5f5 solid 1px;
+        }
+        .slide-back {
+            display: none;
+            position: fixed;
+            bottom: 70px;
+            right: 0;
+            width: 85px;
+            height: 90px;
+        }
+        .slide-back div{
+            font-size: 14px;
+            text-align: center;
+            line-height: 90px;
+            color: #757575;
+            background-color: #ffffff;
+            border: #f5f5f5 solid 1px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <div class="other"></div>
+    <div class="main"></div>
+</div>
+<div class="slide">
+    <a href=""><div>手机APP</div></a>
+    <a href=""><div>个人中心</div></a>
+    <a href=""><div>售后服务</div></a>
+    <a href=""><div>人工服务</div></a>
+    <a href=""><div>购物车</div></a>
+</div>
+<div class="slide-back">
+    <a href=""><div>回到顶部</div></a>
+</div>
+
+<script>
+    //slide(Scroll与offset的运用，pageYOffset为页面卷入高度)
+    var slide = document.querySelector('.slide');
+    var slideback =document.querySelector('.slide-back');
+    var main = document.querySelector('.main');
+    var mainTop = main.offsetTop;//main距离页面顶部的距离
+    document.addEventListener('scroll',function () {
+        if (window.pageYOffset >= mainTop) {
+            slide.style.bottom = 170 + 'px';
+            slideback.style.display = 'block';
+        } else {
+            if (window.pageYOffset < mainTop) {
+                slide.style.bottom = 70 + 'px';
+                slideback.style.display = 'none';
+            }
+        }
+    });
+</script>
+</body>
+</html>

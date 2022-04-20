@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex</title>
+    <style>
+        /*
+        flex-direction: row(x) column(y) 默认row(x)为主轴
+        justify-content: flex-start从上到下 center居中 space-around平分空间 space-between贴两边再平分
+        align-items(单行): flex-start从上到下 center居中 stretch拉伸
+        align-content(多行): flex-start从上到下 center居中 space-around平分空间 space-between贴两边再平分 stretch拉伸
+        flex-flow: wrap换行
+        */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+      .div1 {
+          display: flex;
+          flex-direction: row;
+          width: 1000px;
+          height: 400px;
+          margin: 0 auto;
+          background-color: #77818a;
+      }
+      .div1 a {
+          flex: 1;
+          background-color: #ff6700;
+      }
+      .div2 {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          width: 1000px;
+          height: 400px;
+          margin: 0 auto;
+          background-color: #424249;
+      }
+      .div2 span {
+          width: 100px;
+          background-color: #ff6700;
+      }
+        .div3 {
+            display: flex;
+            flex-direction: row;
+            align-content: space-between;
+            flex-wrap: wrap;
+            width: 1000px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: rebeccapurple;
+        }
+        .div3 span {
+            width: 300px;
+            height: 100px;
+            background-color: #ff6700;
+        }
+
+    </style>
+</head>
+
+<body>
+<!--x轴默认为主轴row，y轴默认为副轴column，-->
+<div class="div1">
+  <a href=""></a>
+  <a href=""></a>
+  <a href=""></a>
+  <a href=""></a>
+  <a href=""></a>
+</div>
+<div class="div2">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+</div>
+<div class="div3">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+    <span>6</span>
+</div>
+</body>
+</html>

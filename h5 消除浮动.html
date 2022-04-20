@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*给要消除的浮动的盒子添加.clearfix类*/
+        .clearfix:after{/*伪元素是行内元素 正常浏览器清除浮动方法*/
+            content: "";
+            display: block;
+            height: 0;
+            clear:both;
+            visibility: hidden;
+        }
+        .clearfix{
+            *zoom: 1;/*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
+        }
+    </style>
+</head>
+<body>
+<div class="clearfix"></div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <style>
+        body {
+            background-image: url("../web/images/src=http___img.jj20.com_up_allimg_1113_022620104202_200226104202-10-1200.jpg&refer=http___img.jj20.jfif");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        .box {
+            width: 1000px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        .box img {
+            float: left;
+            width: 240px;
+            height: 200px;
+            margin-right: 10px;
+            cursor: grab;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <img src="../web/images/src=http___img.jj20.com_up_allimg_1113_022620104202_200226104202-10-1200.jpg&refer=http___img.jj20.jfif" alt="">
+    <img src="../web/images/src=http___img.jj20.com_up_allimg_1114_0G520141A4_200G5141A4-1-1200.jpg&refer=http___img.jj20.jfif" alt="">
+    <img src="../web/images/src=http___pic.jj20.com_up_allimg_911_050516120333_160505120333-3.jpg&refer=http___pic.jj20.jfif" alt="">
+    <img src="../web/images/src=http___up.enterdesk.com_edpic_68_c8_7d_68c87deaf34b1b521135181ebfb12633.jpg&refer=http___up.enterdesk.jfif" alt="">
+</div>
+<script>
+ /*   //方法一：常规方法
+    var img = document.querySelector('.box').querySelectorAll('img');
+    for(var i = 0; i < img.length; i++) {
+        img[i].onclick = function () {
+            document.body.style.backgroundImage = 'url('+this.src+')';
+        }
+    }*/
+    //方法二：监听器法
+    var box = document.querySelector('.box')
+    box.addEventListener('click',function (e){
+        document.body.style.backgroundImage = 'url('+e.target.src+')';
+    })
+</script>
+</body>
+</html>

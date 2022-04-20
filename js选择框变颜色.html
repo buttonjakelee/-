@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            width: 500px;
+            height: 500px;
+        }
+        li {
+            width: 500px;
+            height: 80px;
+            background-color: #ff6700;
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+<script>
+    //委派及排他思想
+    var ul = document.querySelector('ul');
+    ul.addEventListener('click',function (e){
+        for (var i = 0; i < ul.children.length; i++) {
+            ul.children[i].style.backgroundColor = '';
+            ul.style.backgroundColor = '';
+        }
+        e.target.style.backgroundColor = 'black';
+    })
+</script>
+</body>
+</html>

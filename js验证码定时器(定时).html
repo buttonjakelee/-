@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    你的手机号码:<input type="text" class="phone">
+    <button>发送</button>
+</div>
+<script>
+    var div = document.querySelector('div');
+    var time = 3;
+
+    div.children[1].addEventListener('click',function () {
+
+        var timer1 = setInterval(function () {
+            div.children[1].disabled = true;/*按键变灰禁止点击*/
+            if (time === 0) {
+                clearInterval(timer1);
+                div.children[1].disabled = false;/*按键恢复正常*/
+                div.children[1].innerHTML = '发送';
+                time =3;//实际秒数在这里设置
+            }else {
+                div.children[1].innerHTML = '剩余事件'+ time + '可再次发送';
+                time--;
+            }
+        },1000)
+
+    })
+</script>
+</body>
+</html>

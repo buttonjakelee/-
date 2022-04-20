@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/axios.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        input {
+            outline: none;
+            border: none;
+        }
+        .form1 {
+            width: 350px;
+            height: 235px;
+            margin: 0 auto;
+            border: none;
+            background-color: #e9e9f2;
+        }
+        .username, .cipher, .sub {
+            width: 300px;
+            height: 40px;
+            margin: 25px 0 0 25px;
+        }
+        .username img, .cipher img {
+            display: block;
+            float: left;
+        }
+        .username input, .cipher input {
+            float: left;
+            width: 260px;
+            height: 40px;
+            font-size: 12px;
+            text-indent: 1em;
+            color: #8b8b8b;
+        }
+        .sub {
+            background-color: #ff4400;
+            color: #ffffff;
+        }
+        .tip {
+            visibility: hidden;
+            width: 298px;
+            height: 30px;
+            margin: 0 0 0 25px;
+            border: 1px solid #febeb4;
+            background-color: #fef2f2;
+        }
+        .tip span {
+            font-size: 16px;
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<form action="" class="form1" method="post">
+    <div class="tip"><img src="images/tip.png" alt=""><span>请输入账号名</span></div>
+    <div class="username">
+        <img src="images/username.png" alt="">
+        <input name="username" type="text" value="账号/邮箱/手机号">
+    </div>
+    <div class="cipher">
+        <img src="images/cipher.png" alt="">
+        <input name="cipher" type="text" value="请输入登录密码">
+    </div>
+    <input type="submit" class="sub" value="登录">
+</form>
+
+<script>
+    var form1 = document.querySelector('.form1');
+    var rg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;
+    $('.form1').on('submit',function (e) {
+        e.preventDefault();
+        var fd = new FormData(form1);
+        var username = fd.get('username');
+        var cipher = fd.get('cipher');
+        //11
+        if ($('.username').children('input').val().trim() !== '' & $('.cipher').children('input').val().trim() !== '') {
+            $('.tip').css("visibility","hidden");
+            $('.tip').html("<img src=\"images/tip.png\" alt=\"\"><span>请输入账号名</span>");
+        }
+        //00
+        if ($('.username').children('input').val().trim() === '' & $('.cipher').children('input').val().trim() === '') {
+            $('.tip').css("visibility","visible");
+            $('.tip').html("<img src=\"images/tip.png\" alt=\"\"><span>请输入账号名</span>");
+        }
+        //01
+        if ($('.username').children('input').val().trim() === '' & $('.cipher').children('input').val().trim() !== '') {
+            $('.tip').css("visibility","visible");
+            $('.tip').html("<img src=\"images/tip.png\" alt=\"\"><span>请输入账号名</span>");
+        }
+        //10
+        if ($('.cipher').children('input').val().trim() === '' & $('.username').children('input').val().trim() !== '') {
+            $('.tip').css("visibility","visible");
+            $('.tip').html("<img src=\"images/tip.png\" alt=\"\"><span>请输入密码</span>");
+        }
+
+        if(rg.test('username') & rg.test('cipher') === true) {
+            axios({
+                method: 'post',
+                url: 'http://localhost:63342/%E7%BD%91%E9%A1%B5/%E5%B8%B8%E7%94%A8js%20ES6/post.json',
+                data: { username: username, cipher: cipher},
+                dataType: 'json',
+                contentType: 'application/json',
+            }).then(function (res) {
+                console.log(res.data);
+            })
+        } else {
+            alert("请输入正确格式的账号和密码");
+        }
+
+    })
+
+</script>
+</body>
+</html>
